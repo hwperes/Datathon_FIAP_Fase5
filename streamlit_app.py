@@ -172,8 +172,6 @@ def configurar_sidebar():
             {"nome": "Henrique Waideman Peres"},
         ]
 
-        for membro in membros:
-            st.markdown(f"• [{membro['nome']}]({membro['link']})")
             
         st.markdown("---")
         
