@@ -139,8 +139,8 @@ def load_models_and_config():
 
     """Carrega o modelo treinado e o arquivo de configuração usando caminhos relativos."""
     
-    caminho_modelo = os.path.join("Modelos", "Modelo_passosMagicos.pkl")
-    caminho_config = os.path.join("Modelos", "Configuracao_passosMagicos.pkl")
+    caminho_modelo = os.path.join("Modelos", "modelo_passosmagicos.pkl")
+    caminho_config = os.path.join("Modelos", "configuracao_passosmagicos.pkl")
     
     try:
         modelo = joblib.load(caminho_modelo)
