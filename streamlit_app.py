@@ -19,6 +19,7 @@ validar_shap = 'n'
 # Configuração da página
 st.set_page_config(
     page_title="Predição de Risco de Defasagem",
+    page_icon="🎓",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
@@ -138,8 +139,8 @@ def load_models_and_config():
 
     """Carrega o modelo treinado e o arquivo de configuração usando caminhos relativos."""
     
-    caminho_modelo = os.path.join("Modelos", "Modelo_passosMagicos.pkl")
-    caminho_config = os.path.join("Modelos", "Configuracao_passosMagicos.pkl")
+    caminho_modelo = os.path.join("models", "modelo_passos_magicos.pkl")
+    caminho_config = os.path.join("models", "config_passos_magicos.pkl")
     
     try:
         modelo = joblib.load(caminho_modelo)
@@ -147,7 +148,7 @@ def load_models_and_config():
         return modelo, config
         
     except FileNotFoundError:
-        st.error("Não foi possível localizar os arquivos do modelo. Confirme se a pasta 'Modelos' está junto ao app.py e se os arquivos .pkl estão presentes.")
+        st.error(f"Arquivos não encontrados. Certifique-se de que a pasta 'models' existe junto ao app.py e contém os arquivos .pkl.")
         return None, None
 
 @st.cache_resource
@@ -156,7 +157,7 @@ def _get_shap_explainer(_classifier):
 
 def configurar_sidebar():
     with st.sidebar:
-        st.header("Sobre o Projeto")
+        st.header("📌 Sobre o Projeto")
         st.info(
             """
             Aplicativo desenvolvido para o **Datathon FIAP - Fase 5** para prevê o risco de defasagem de alunos da ONG Passos Mágicos.
@@ -164,20 +165,25 @@ def configurar_sidebar():
         )
         st.markdown("---")
 
-        st.subheader("Equipe de Desenvolvimento")
+        st.subheader("👨‍💻 Equipe de Desenvolvimento")
         
         membros = [
-            {"nome": "Fabiana Cardoso da Silva"},
-            {"nome": "Henrique do Couto Santos"}, 
-            {"nome": "Henrique Waideman Peres"},
+            {"nome": "Elton José Araujo Silva", "link": "https://www.linkedin.com/in/elton-araujo-silva/"},
+            {"nome": "Leonardo Fajoli Formigon", "link": "https://www.linkedin.com/in/leonardo-formigon-63052320b/"}, 
+            {"nome": "Lucas Augusto Fernandes de Lira", "link": "https://www.linkedin.com/in/lucas--lira-/"},
+            {"nome": "Mariana Domingues Brandão", "link": "https://www.linkedin.com/in/maridbrandao"},
+            {"nome": "Ricardo Vieira Viana", "link": "https://www.linkedin.com/in/ricardvviana"}
+
         ]
 
+        for membro in membros:
+            st.markdown(f"• [{membro['nome']}]({membro['link']})")
             
         st.markdown("---")
         
-        st.subheader("Código Fonte")
+        st.subheader("📂 Código Fonte")
         st.markdown("Acesse o repositório completo do projeto:")
-        st.link_button("Ver no GitHub", "https://github.com/hwperes/Datathon_FIAP_Fase5")
+        st.link_button("🔗 Ver no GitHub", "https://github.com/RicardViana/fiap-fase5-datathon")
 
 def gerar_explicacao_shap(model, input_df_processed):
 
@@ -189,7 +195,7 @@ def gerar_explicacao_shap(model, input_df_processed):
 
         nome_modelo = type(classifier).__name__
         if nome_modelo == 'LogisticRegression':
-            st.info("O gráfico detalhado de explicabilidade (SHAP) é exclusivo para modelos baseados em Árvores de Decisão. O modelo atual em uso é uma Regressão Logística.")
+            st.info("ℹ️ O gráfico detalhado de explicabilidade (SHAP) é exclusivo para modelos baseados em Árvores de Decisão. O modelo atual em uso é uma Regressão Logística.")
             return None, None
 
         input_transformed = preprocessor.transform(input_df_processed)
@@ -322,11 +328,11 @@ def main():
     model, config = load_models_and_config()
     
     # Titulo e subtitulo
-    st.title("Previsão de Defasagem Educacional")
+    st.title("🎓 Previsão de Defasagem Educacional")
     st.markdown("Analise o risco do aluno apresentar defasagem educacional (IAN <= 5) com base em seus indicadores.")
     
     if config:
-        st.caption(f"Modelo Ativo: **{config['best_model']}** | 🎚️ Limite (Threshold) de Corte: **{config['threshold']:.2f}**")
+        st.caption(f"🤖 Modelo Ativo: **{config['best_model']}** | 🎚️ Limite (Threshold) de Corte: **{config['threshold']:.2f}**")
     
     st.markdown("---")
 
@@ -354,14 +360,14 @@ def main():
                     st.header("Resultado da Análise")
 
                     if proba_risco >= limiar:
-                        st.error("**ALTO RISCO DE DEFASAGEM IDENTIFICADO**")
+                        st.error("⚠️ **ALTO RISCO DE DEFASAGEM IDENTIFICADO**")
                         st.metric(label="Probabilidade de Risco", value=f"{proba_risco * 100:.1f}%")
-                        st.warning("**Recomendação:** Necessário acompanhamento pedagógico e psicossocial intensificado.")
+                        st.warning("👉 **Recomendação:** Necessário acompanhamento pedagógico e psicossocial intensificado.")
 
                     else:
-                        st.success("**ALUNO NO CAMINHO CERTO (BAIXO RISCO)**")
+                        st.success("✅ **ALUNO NO CAMINHO CERTO (BAIXO RISCO)**")
                         st.metric(label="Probabilidade de Risco", value=f"{proba_risco * 100:.1f}%")
-                        st.info("**Recomendação:** Manter acompanhamento padrão para garantir o engajamento.")
+                        st.info("👉 **Recomendação:** Manter acompanhamento padrão para garantir o engajamento.")
                     
                     # 4. Exibição do SHAP
                     st.markdown("---")
@@ -381,7 +387,7 @@ def main():
                     # Usar para mapear o shap
                     if validar_shap.lower() == 's' and df_map is not None:
                         st.markdown("---")
-                        st.header("Debug: Variáveis")
+                        st.header("🕵️‍♀️ Debug: Variáveis")
                         with st.expander("Ver Mapeamento"):
                             st.dataframe(df_map)
 
@@ -389,7 +395,7 @@ def main():
                     st.error(f"Ocorreu um erro técnico ao realizar a predição: {e}")
 
         else:
-            st.error("O modelo não foi carregado corretamente.")
+            st.error("⚠️ O modelo não foi carregado corretamente.")
 
 if __name__ == "__main__":
     main()
