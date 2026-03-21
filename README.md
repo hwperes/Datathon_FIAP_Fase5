@@ -129,11 +129,11 @@ O modelo combina variáveis originais e derivadas, capturando tanto aspectos ind
 
 Foram utilizadas as seguintes métricas:
 
-Accuracy
-Precision
-Recall
-F1-Score
-ROC-AUC
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
 ```python
 from sklearn.metrics import (
     accuracy_score,
@@ -144,8 +144,6 @@ from sklearn.metrics import (
 )
 ```
 📊 Resultados do Modelo
-
-⚠️ Substituir pelos valores reais obtidos no notebook
 
 - Accuracy: 86,64%
 - Precision: 86,93%
@@ -159,9 +157,9 @@ Foco principal do projeto: maximizar o Recall, garantindo maior identificação 
 
 ## 5. Principais Insights
 ### 5.1 Evolução e Impacto do Programa
-Observa-se evolução consistente dos indicadores ao longo dos anos
-Alunos em fases mais avançadas (Topázio) apresentam melhor desempenho
-Tempo no programa está positivamente correlacionado com o INDE
+- Observa-se evolução consistente dos indicadores ao longo dos anos
+- Alunos em fases mais avançadas (Topázio) apresentam melhor desempenho
+- Tempo no programa está positivamente correlacionado com o INDE
 
 ### 5.2 Correlações Multidimensionais
 
