@@ -147,11 +147,11 @@ from sklearn.metrics import (
 
 ⚠️ Substituir pelos valores reais obtidos no notebook
 
-Accuracy: 86,64%
-Precision: 86,93%
-Recall: 91,07%
-F1 Score: 88,95%
-ROC AUC: 92,3%
+-Accuracy: 86,64%
+-Precision: 86,93%
+-Recall: 91,07%
+-F1 Score: 88,95%
+-ROC AUC: 92,3%
 
 Foco principal do projeto: maximizar o Recall, garantindo maior identificação de alunos em risco.
 
