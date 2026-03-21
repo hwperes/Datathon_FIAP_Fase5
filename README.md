@@ -190,53 +190,60 @@ Previsão de risco em tempo real
 Exibição da probabilidade de defasagem
 Interface simples e intuitiva
 
+## 🔗 Link da Aplicação
+Acesse o modelo preditivo em tempo real: [https://datathonfiapfase5-grupo165.streamlit.app/](https://datathonfiapfase5-grupo165.streamlit.app/)
+
 ---
 
+## Dashboard Analítico (Power BI)
+
+Foi construída uma base analítica em português, pronta para consumo no Power BI:
+
+
+Arquivo principal:
+- `base_tratada.xlsx`
+
+[Dashboard - Case Passos Mágicos - Grupo 165](https://app.powerbi.com/view?r=eyJrIjoiMWYxZWRlNmQtM2RkMC00MzQ4LWE3ZGYtNTZlNzkwMzVlMmQ0IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9)
+
 ## 7. Estrutura do Repositório
-📁 data/
-   ├── base_tratada.xlsx
-
-📁 notebooks/
-   ├── Tratamento_Datathon_Fase5.ipynb
-   ├── Modelagem.ipynb
-
-📁 src/
-   ├── preprocessing.py
-   ├── model.py
-
-📁 app/
-   ├── streamlit_app.py
-
-📁 models/
-   ├── modelo.pkl
-
-📄 README.md
-📄 requirements.txt
-
+```bash
+├── .streamlit/
+│   └── config.toml
+├── notebooks/
+│   └── Datathon_Fase5.ipynb
+│   └── Tratamento_Datathon_Fase5.ipynb
+├── data/
+│   ├── raw/
+│   │   └── base_tratada.xlsx
+│   └── processed/
+│       └── BASE DE DADOS PEDE 2024 - DATATHON.xlsx
+├── docs/
+│   ├── doc_modelagem.md
+│   │── Estudo de Obesidade.pbix
+│   └── index.md
+│       
+├── modelos/
+│   ├── config_passos_magicos.joblib
+│   └── modelo_passos_magicos.joblib
+├── referências/
+│   └── Dicionário Dados Datathon.pdf
+│   └── POSTECH - DTAT - Datathon - Fase 5.pdf
+├── streamlit_app.py
+├── requirements.txt
+└── README.md
+```
 ---
 
 ## 8. Documentação Técnica
 Tecnologias utilizadas
-Python 3.x
-Pandas
-NumPy
-Scikit-learn
-XGBoost
-Streamlit
-Joblib
-Pipeline do Modelo
-Entrada de dados do usuário
-Pré-processamento
-Criação de features derivadas:
-media_notas
-engajamento_geral
-score_pedagogico
-Seleção das features
-Aplicação do modelo treinado
-Retorno da probabilidade de risco
-Deploy
-Aplicação publicada no Streamlit Community Cloud
-Código versionado no GitHub
+- Python 3.x
+- Pandas
+- NumPy
+- Scikit-learn
+- XGBoost
+- Streamlit
+- Joblib
+  
 
 ---
 
@@ -244,4 +251,10 @@ Código versionado no GitHub
 
 Este projeto demonstra como técnicas de ciência de dados podem ser aplicadas para gerar impacto social, permitindo identificar alunos em risco de defasagem de forma antecipada.
 
-A solução desenvolvida contribui diretamente para a tomada de decisão da ONG, possibilitando intervenções mais rápidas e assertivas.
+A solução desenvolvida contribui diretamente para a tomada de decisão da Passos Mágicos, possibilitando intervenções mais rápidas e assertivas.
+
+## Equipe
+
+- **Fabiana Cardoso da Silva**  
+- **Henrique do Couto Santos**  
+- **Henrique Waideman Peres**
