@@ -56,9 +56,9 @@ Principais ações:
 - Encoding de variáveis
 - Criação de features derivadas:
 
-media_notas = (nota_port + nota_mat + nota_ing) / 3
-engajamento_geral = (ieg + iaa + ips) / 3
-score_pedagogico = (ida + ipp + ipv) / 3
+- media_notas = (nota_port + nota_mat + nota_ing) / 3
+- engajamento_geral = (ieg + iaa + ips) / 3
+- score_pedagogico = (ida + ipp + ipv) / 3
 
 Essas variáveis agregadas permitem capturar melhor o comportamento multidimensional dos alunos.
 
@@ -66,12 +66,12 @@ Essas variáveis agregadas permitem capturar melhor o comportamento multidimensi
 
 A variável target utilizada foi:
 
-risco_defasagem
+- risco_defasagem
 
 Classificação:
 
-0 → Sem risco
-1 → Com risco de defasagem
+- 0 → Sem risco
+- 1 → Com risco de defasagem
 
 A construção dessa variável considerou padrões de desempenho acadêmico, engajamento e adequação ao nível.
 
@@ -81,16 +81,20 @@ Foi utilizada divisão estratificada para preservar a distribuição da variáve
 
 from sklearn.model_selection import train_test_split
 
+```python
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
     test_size=0.2,
     random_state=42,
     stratify=y
 )
+```
+
 ### 4.4 Modelagem Preditiva
 
 O modelo final escolhido foi o XGBoost Classifier, devido à sua alta performance em problemas de classificação tabular.
 
+```python
 from xgboost import XGBClassifier
 
 model = XGBClassifier(
@@ -102,7 +106,9 @@ model = XGBClassifier(
     random_state=42,
     eval_metric="logloss"
 )
+```
 📌 Features utilizadas no modelo
+```python
 features = [
     "idade_22",
     "genero_bin",
@@ -115,6 +121,7 @@ features = [
     "media_notas",
     "pedra_num"
 ]
+```
 
 O modelo combina variáveis originais e derivadas, capturando tanto aspectos individuais quanto agregados do desempenho dos alunos.
 
@@ -127,6 +134,7 @@ Precision
 Recall
 F1-Score
 ROC-AUC
+```python
 from sklearn.metrics import (
     accuracy_score,
     precision_score,
@@ -134,6 +142,7 @@ from sklearn.metrics import (
     f1_score,
     roc_auc_score
 )
+```
 📊 Resultados do Modelo
 
 ⚠️ Substituir pelos valores reais obtidos no notebook
