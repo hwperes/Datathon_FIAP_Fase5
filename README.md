@@ -210,7 +210,7 @@ Foi construída uma base analítica em português, pronta para consumo no Power 
 Arquivo principal:
 - `base_tratada.xlsx`
 
-[Dashboard - Case Passos Mágicos - Grupo 165](https://app.powerbi.com/view?r=eyJrIjoiMWYxZWRlNmQtM2RkMC00MzQ4LWE3ZGYtNTZlNzkwMzVlMmQ0IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9)
+[Dashboard - Case Passos Mágicos - Grupo 165](https://app.powerbi.com/view?r=eyJrIjoiMDQ1YzQ5ZDUtMjk2YS00MDQyLWE1M2UtNThjMzc3YTRiMTNkIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9)
 
 ## 7. Estrutura do Repositório
 ```bash
