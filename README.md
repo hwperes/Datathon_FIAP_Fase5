@@ -147,11 +147,11 @@ from sklearn.metrics import (
 
 ⚠️ Substituir pelos valores reais obtidos no notebook
 
--Accuracy: 86,64%
--Precision: 86,93%
--Recall: 91,07%
--F1 Score: 88,95%
--ROC AUC: 92,3%
+- Accuracy: 86,64%
+- Precision: 86,93%
+- Recall: 91,07%
+- F1 Score: 88,95%
+- ROC AUC: 92,3%
 
 Foco principal do projeto: maximizar o Recall, garantindo maior identificação de alunos em risco.
 
@@ -167,20 +167,20 @@ Tempo no programa está positivamente correlacionado com o INDE
 
 Principais relações identificadas:
 
-Forte correlação entre IEG (engajamento) e IDA (aprendizado)
-Indicadores psicossociais (IPS) impactam diretamente o desempenho
-Baixo engajamento é um forte preditor de risco
-INDE é altamente influenciado por IDA, IEG e IPP
+- Forte correlação entre IEG (engajamento) e IDA (aprendizado)
+- Indicadores psicossociais (IPS) impactam diretamente o desempenho
+- Baixo engajamento é um forte preditor de risco
+- INDE é altamente influenciado por IDA, IEG e IPP
 
 ### 5.3 Performance do Modelo Preditivo
 
 O modelo foi capaz de identificar padrões relevantes de risco com base em:
 
-Engajamento (IEG)
-Desempenho acadêmico (IDA)
-Indicadores psicossociais (IPS)
-Média de notas
-Classificação do aluno (pedra)
+- Engajamento (IEG)
+- Desempenho acadêmico (IDA)
+- Indicadores psicossociais (IPS)
+- Média de notas
+- Classificação do aluno (pedra)
 
 Variáveis mais importantes (feature importance):
 
@@ -193,11 +193,11 @@ model.feature_importances_
 Foi desenvolvida uma aplicação interativa para disponibilizar o modelo para uso prático.
 
 ### 6.1 Funcionalidades
-Input manual dos dados do aluno
-Cálculo automático de features derivadas
-Previsão de risco em tempo real
-Exibição da probabilidade de defasagem
-Interface simples e intuitiva
+- Input manual dos dados do aluno
+- Cálculo automático de features derivadas
+- Previsão de risco em tempo real
+- Exibição da probabilidade de defasagem
+- Interface simples e intuitiva
 
 ## 🔗 Link da Aplicação
 Acesse o modelo preditivo em tempo real: [https://datathonfiapfase5-grupo165.streamlit.app/](https://datathonfiapfase5-grupo165.streamlit.app/)
