@@ -56,7 +56,192 @@ Principais ações:
 - Encoding de variáveis
 - Criação de features derivadas:
 
-```python
 media_notas = (nota_port + nota_mat + nota_ing) / 3
 engajamento_geral = (ieg + iaa + ips) / 3
 score_pedagogico = (ida + ipp + ipv) / 3
+
+Essas variáveis agregadas permitem capturar melhor o comportamento multidimensional dos alunos.
+
+### 4.2 Definição da Variável Target
+
+A variável target utilizada foi:
+
+risco_defasagem
+
+Classificação:
+
+0 → Sem risco
+1 → Com risco de defasagem
+
+A construção dessa variável considerou padrões de desempenho acadêmico, engajamento e adequação ao nível.
+
+### 4.3 Separação dos Dados
+
+Foi utilizada divisão estratificada para preservar a distribuição da variável target:
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+### 4.4 Modelagem Preditiva
+
+O modelo final escolhido foi o XGBoost Classifier, devido à sua alta performance em problemas de classificação tabular.
+
+from xgboost import XGBClassifier
+
+model = XGBClassifier(
+    n_estimators=300,
+    learning_rate=0.05,
+    max_depth=6,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    random_state=42,
+    eval_metric="logloss"
+)
+📌 Features utilizadas no modelo
+features = [
+    "idade_22",
+    "genero_bin",
+    "ieg",
+    "ida",
+    "iaa",
+    "ips",
+    "ipp",
+    "ipv",
+    "media_notas",
+    "pedra_num"
+]
+
+O modelo combina variáveis originais e derivadas, capturando tanto aspectos individuais quanto agregados do desempenho dos alunos.
+
+### 4.5 Avaliação dos Resultados
+
+Foram utilizadas as seguintes métricas:
+
+Accuracy
+Precision
+Recall
+F1-Score
+ROC-AUC
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score
+)
+📊 Resultados do Modelo
+
+⚠️ Substituir pelos valores reais obtidos no notebook
+
+Accuracy: XX%
+Precision: XX%
+Recall: XX%
+F1-Score: XX%
+ROC-AUC: XX%
+
+Foco principal do projeto: maximizar o Recall, garantindo maior identificação de alunos em risco.
+
+---
+
+## 5. Principais Insights
+### 5.1 Evolução e Impacto do Programa
+Observa-se evolução consistente dos indicadores ao longo dos anos
+Alunos em fases mais avançadas (Topázio) apresentam melhor desempenho
+Tempo no programa está positivamente correlacionado com o INDE
+
+### 5.2 Correlações Multidimensionais
+
+Principais relações identificadas:
+
+Forte correlação entre IEG (engajamento) e IDA (aprendizado)
+Indicadores psicossociais (IPS) impactam diretamente o desempenho
+Baixo engajamento é um forte preditor de risco
+INDE é altamente influenciado por IDA, IEG e IPP
+
+### 5.3 Performance do Modelo Preditivo
+
+O modelo foi capaz de identificar padrões relevantes de risco com base em:
+
+Engajamento (IEG)
+Desempenho acadêmico (IDA)
+Indicadores psicossociais (IPS)
+Média de notas
+Classificação do aluno (pedra)
+
+Variáveis mais importantes (feature importance):
+
+model.feature_importances_
+
+---
+
+## 6. Aplicação em Streamlit
+
+Foi desenvolvida uma aplicação interativa para disponibilizar o modelo para uso prático.
+
+### 6.1 Funcionalidades
+Input manual dos dados do aluno
+Cálculo automático de features derivadas
+Previsão de risco em tempo real
+Exibição da probabilidade de defasagem
+Interface simples e intuitiva
+
+---
+
+## 7. Estrutura do Repositório
+📁 data/
+   ├── base_tratada.xlsx
+
+📁 notebooks/
+   ├── Tratamento_Datathon_Fase5.ipynb
+   ├── Modelagem.ipynb
+
+📁 src/
+   ├── preprocessing.py
+   ├── model.py
+
+📁 app/
+   ├── streamlit_app.py
+
+📁 models/
+   ├── modelo.pkl
+
+📄 README.md
+📄 requirements.txt
+
+---
+
+## 8. Documentação Técnica
+Tecnologias utilizadas
+Python 3.x
+Pandas
+NumPy
+Scikit-learn
+XGBoost
+Streamlit
+Joblib
+Pipeline do Modelo
+Entrada de dados do usuário
+Pré-processamento
+Criação de features derivadas:
+media_notas
+engajamento_geral
+score_pedagogico
+Seleção das features
+Aplicação do modelo treinado
+Retorno da probabilidade de risco
+Deploy
+Aplicação publicada no Streamlit Community Cloud
+Código versionado no GitHub
+
+---
+
+📌 Conclusão
+
+Este projeto demonstra como técnicas de ciência de dados podem ser aplicadas para gerar impacto social, permitindo identificar alunos em risco de defasagem de forma antecipada.
+
+A solução desenvolvida contribui diretamente para a tomada de decisão da ONG, possibilitando intervenções mais rápidas e assertivas.
